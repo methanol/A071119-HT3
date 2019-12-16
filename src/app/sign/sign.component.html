@@ -1,0 +1,69 @@
+<div class="form">	
+	<ul class="tab-group">
+		<li class="tab active"><a [routerLink]="['/signup']">Sign Up</a></li>
+		<li class="tab"><a [routerLink]="['/login']">Log In</a></li>
+	</ul>
+
+	<div class="tab-content">
+		<div id="signup">   
+			<h1>Sign Up for Free</h1>
+			<form #signForm = "ngForm" (submit) = "login(signForm.value)">
+				<div class="top-row">
+					<div class="field-wrap">
+						<input #fname="ngModel" name="fname" ngModel type="text" 
+						required 
+						autocomplete="off" 
+						placeholder="First Name"
+						appValidName
+						/>
+						<div *ngIf="(lname.errors || fname.errors) && (lname.errors.wrongName || fname.errors.wrongName)" class="error-text">Note: {{ (lname.errors || fname.errors) && (lname.errors.wrongName || fname.errors.wrongName)}}</div>
+					</div>
+					<div class="field-wrap">
+						<input #lname="ngModel" name="lname" ngModel
+						type="text"
+						required 
+						autocomplete="off" 
+						placeholder="Last Name"
+						appValidName
+						/>
+					</div>
+				</div>
+				
+				<div class="field-wrap">
+					<input #mail="ngModel" ngModel name="mail" 
+					type="email"
+					required 
+					autocomplete="off" 
+					placeholder="Email Address"
+					appValidMail
+					/>
+					<div *ngIf="mail.errors && mail.errors.wrongMail" class="error-text">Note: {{ mail.errors && mail.errors.wrongMail}}</div>
+				</div>
+				<div class="field-wrap">
+					<input ngModel name="password" (input) = "setPass($event.target.value)"
+					#pass="ngModel"
+					type="password"
+					required 
+					autocomplete="off" 
+					placeholder="Set A Password"
+					/>
+					<div *ngIf="pass.errors" class="error-text">Note: password should be at least 5 characters</div>
+				</div>
+
+				<div class="field-wrap">
+					<input ngModel name="cpassword" (input) = "confirmPass($event.target.value)"
+					#cpass="ngModel"
+					type="password"
+					required 
+					autocomplete="off" 
+					placeholder="Repeat a password"
+					/>
+					<div *ngIf="cpass.errors" class="error-text">Note: password should be at least 5 characters</div>
+					<div *ngIf="primaryPass !== secondaryPass" class="error-text">Note: passwords are not equal</div>
+				</div>
+				<button type="submit" class="button button-block" [disabled]= "signForm.invalid ||(primaryPass !== secondaryPass)">Get Started</button>
+			
+			</form>
+		</div>
+	</div>
+</div>
