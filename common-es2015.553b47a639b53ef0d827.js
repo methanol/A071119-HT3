@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[1],{BA2W:function(n,e,s){"use strict";s.d(e,"a",(function(){return t}));class t{validate({value:n}){return/[\w-]+@(\w+\.)+[a-z]+/g.test(n)?null:{wrongMail:"please check your email, current address is incorrect"}}}},PCNd:function(n,e,s){"use strict";s.d(e,"a",(function(){return t}));class t{}}}]);
