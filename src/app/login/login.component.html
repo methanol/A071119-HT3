@@ -7,7 +7,20 @@
 	<div class="tab-content">
 		<div id="login">   
 			<h1>Welcome Back!</h1>
-			<form #logForm = "ngForm" (submit) = "login(logForm.value)">
+			<form [formGroup] = "loginForm" (submit) = "login(loginForm.value)">
+				<div class="field-wrap">
+					<input name="mail" type="email" autocomplete="off" placeholder="Email Address" [formControl] = "loginForm.get('mail')"/>
+					<div *ngIf="loginForm.get('mail').errors && loginForm.get('mail').errors.wrongMail" class="error-text">Note: {{ loginForm.get('mail').errors && loginForm.get('mail').errors.wrongMail}}</div>
+				</div>
+
+				<div class="field-wrap">
+					<input name="password" type="password" autocomplete="off" placeholder="Password" [formControl] = "loginForm.get('password')"/>
+					<div *ngIf="loginForm.get('password').errors" class="error-text">Note: password should be at least 5 characters</div>
+				</div>
+
+				<button class="button button-block" type="submit" [disabled]= "loginForm.invalid">Log In </button>
+			</form>
+			<!-- <form #logForm = "ngForm" (submit) = "login(logForm.value)">
 				<div class="field-wrap">
 					<input #mail="ngModel" ngModel name="mail"
 					type="email" 
@@ -29,14 +42,9 @@
 					/>
 					<div *ngIf="pass.errors" class="error-text">Note: password should be at least 5 characters</div>
 				</div>
-			
-				<!--<p class="forgot"><a href="#">Forgot Password?</a></p> 
-				TODO - add working email reminder
-				-->
 				
 				<button class="button button-block" type="submit" [disabled]= "logForm.invalid">Log In </button>
-			</form>
-			
+			</form> -->
 		</div>	
 	</div>
 </div>

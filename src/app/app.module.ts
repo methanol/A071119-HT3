@@ -4,6 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WorkspaceComponent } from './workspace/workspace.component';
+import { ValidMailDirective } from './directives/valid-mail.directive';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,7 @@ import { WorkspaceComponent } from './workspace/workspace.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [ValidMailDirective],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

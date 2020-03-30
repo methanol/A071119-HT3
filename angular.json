@@ -118,8 +118,13 @@
               "devServerTarget": "A071119-HT3:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
-    }},
+    }
+  },
   "defaultProject": "A071119-HT3"
 }
