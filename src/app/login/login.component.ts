@@ -12,6 +12,7 @@ import { ValidMailDirective } from '../directives/valid-mail.directive';
 export class LoginComponent implements OnInit {
 
   public loginForm: FormGroup;
+  public loginErrorText: string;
 
   constructor(
     private router: Router,
@@ -29,6 +30,11 @@ export class LoginComponent implements OnInit {
   public login(user: { mail: string, password: string }): void {
     console.log("name " + user.mail, "password " + user.password);
     this.router.navigate([`/${Routes.WORKSPACE}`]);
+  }
+
+  get loginError() : boolean {
+    this.loginErrorText = (this.loginForm.get('mail').errors) ? this.loginForm.get('mail').errors.wrongMail : "";
+    return this.loginForm.get('mail').errors && this.loginForm.get('mail').errors.wrongMail;
   }
 
 }

@@ -10,7 +10,7 @@
 			<form [formGroup] = "loginForm" (submit) = "login(loginForm.value)">
 				<div class="field-wrap">
 					<input name="mail" type="email" autocomplete="off" placeholder="Email Address" [formControl] = "loginForm.get('mail')"/>
-					<div *ngIf="loginForm.get('mail').errors && loginForm.get('mail').errors.wrongMail" class="error-text">Note: {{ loginForm.get('mail').errors && loginForm.get('mail').errors.wrongMail}}</div>
+					<div *ngIf="loginError" class="error-text">Note: {{loginErrorText}}</div>
 				</div>
 
 				<div class="field-wrap">
@@ -20,31 +20,6 @@
 
 				<button class="button button-block" type="submit" [disabled]= "loginForm.invalid">Log In </button>
 			</form>
-			<!-- <form #logForm = "ngForm" (submit) = "login(logForm.value)">
-				<div class="field-wrap">
-					<input #mail="ngModel" ngModel name="mail"
-					type="email" 
-					required 
-					autocomplete="off" 
-					placeholder="Email Address"
-					appValidMail
-					/>
-					<div *ngIf="mail.errors && mail.errors.wrongMail" class="error-text">Note: {{ mail.errors && mail.errors.wrongMail}}</div>
-				</div>
-				<div class="field-wrap">
-					<input ngModel name="password" 
-					#pass="ngModel"
-					type="password"
-					required 
-					autocomplete="off" 
-					placeholder="Password"
-					minlength="5"
-					/>
-					<div *ngIf="pass.errors" class="error-text">Note: password should be at least 5 characters</div>
-				</div>
-				
-				<button class="button button-block" type="submit" [disabled]= "logForm.invalid">Log In </button>
-			</form> -->
 		</div>	
 	</div>
 </div>

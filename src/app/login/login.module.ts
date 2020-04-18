@@ -14,12 +14,12 @@ import { SharedModule } from '../shared/shared.module';
 	CommonModule,
 	ReactiveFormsModule,
 	SharedModule,
-    RouterModule.forChild([
-      {
-        path: '',
-        component: LoginComponent
-      }
-    ])
+  RouterModule.forChild([
+    {
+      path: '',
+      component: LoginComponent
+    }
+  ])
   ]
 })
 

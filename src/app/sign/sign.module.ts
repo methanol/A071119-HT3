@@ -2,26 +2,23 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SignComponent } from './sign.component';
 import { RouterModule } from '@angular/router';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-//import { ValidMailDirective } from '../directives/valid-mail.directive';
+import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
-	SignComponent,
-	//ValidMailDirective
+	SignComponent
   ],
   imports: [
 	FormsModule,
 	CommonModule,
-	ReactiveFormsModule,
 	SharedModule,
-    RouterModule.forChild([
-      {
-        path: '',
-        component: SignComponent
-      }
-    ])
+  RouterModule.forChild([
+    {
+      path: '',
+      component: SignComponent
+    }
+  ])
   ]
 })
 

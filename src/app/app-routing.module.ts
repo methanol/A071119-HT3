@@ -1,13 +1,22 @@
 import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
 import { Routes } from './config';
-import { WorkspaceComponent } from './workspace/workspace.component'
+import { WorkspaceComponent } from './workspace/workspace.component';
 
 
 const routes: Route[] = [
-  { path: Routes.WORKSPACE, component: WorkspaceComponent }, //TODO - add workspace guard
-  { path: Routes.LOGIN, loadChildren: "./login/login.module#LoginModule"}, 
-  { path: Routes.SIGNUP, loadChildren: "./sign/sign.module#SignModule"}, 
+  { 
+    path: Routes.WORKSPACE, 
+    component: WorkspaceComponent 
+  },
+  { 
+    path: Routes.LOGIN, 
+    loadChildren: () => import('./login/login.module').then(mod => mod.LoginModule),
+  }, 
+  { 
+    path: Routes.SIGNUP, 
+    loadChildren: () => import('./sign/sign.module').then(mod => mod.SignModule),
+  },
   {
     path: '**',
     redirectTo: Routes.SIGNUP
